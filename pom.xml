@@ -436,6 +436,7 @@
                                 <phase>package</phase>
                                 <goals>
                                     <goal>javadocJar</goal>
+                                    <goal>dokka</goal>
                                 </goals>
                             </execution>
                         </executions>
@@ -443,11 +444,21 @@
                             <sourceDirectories>
                                 <dir>${project.basedir}/src/main/kotlin</dir>
                             </sourceDirectories>
+                            <includes>
+                                <include>${project.basedir}/module.md</include>
+                            </includes>
                             <languageVersion>1.3</languageVersion>
+                            <jarOutputDirectory>${project.build.directory}</jarOutputDirectory>
+                            <outputDir>${maven.multiModuleProjectDirectory}/docs</outputDir>
                             <dokkaPlugins>
                                 <plugin>
                                     <groupId>org.jetbrains.dokka</groupId>
                                     <artifactId>kotlin-as-java-plugin</artifactId>
+                                    <version>${dokka.version}</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.jetbrains.dokka</groupId>
+                                    <artifactId>gfm-plugin</artifactId>
                                     <version>${dokka.version}</version>
                                 </plugin>
                             </dokkaPlugins>
