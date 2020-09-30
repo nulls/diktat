@@ -811,3 +811,10 @@ style:
     active: true
     excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
     excludeImports: ['org.cqfn.diktat.ruleset.utils.*', 'java.util.*', 'kotlinx.android.synthetic.*']
+
+diktat-ruleset:
+  active: true
+  comments:
+    active: true
+  kdoc-comments:
+    active: true

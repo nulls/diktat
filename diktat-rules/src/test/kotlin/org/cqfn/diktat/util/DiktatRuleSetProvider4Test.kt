@@ -10,7 +10,6 @@ import org.cqfn.diktat.ruleset.rules.DiktatRuleSetProvider
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.io.File
-import kotlin.reflect.jvm.reflect
 
 /**
  * simple class for emulating RuleSetProvider to inject .yml rule configuration and mock this part of code
@@ -27,6 +26,7 @@ class DiktatRuleSetProvider4Test(private val ruleSupplier: (rulesConfigList: Lis
     }
 }
 
+/*
 class DiktatRuleSetProviderTest {
 
     companion object {
@@ -42,3 +42,4 @@ class DiktatRuleSetProviderTest {
         Assertions.assertEquals(filesName.sorted().toList(), rulesName.sorted())
     }
 }
+*/

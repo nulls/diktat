@@ -6,13 +6,20 @@ import com.pinterest.ktlint.core.ast.ElementType.EOL_COMMENT
 import com.pinterest.ktlint.core.ast.ElementType.FILE
 import com.pinterest.ktlint.core.ast.ElementType.WHITE_SPACE
 import com.pinterest.ktlint.core.ast.prevSibling
+import io.gitlab.arturbosch.detekt.api.Config
+import io.gitlab.arturbosch.detekt.api.Debt
+import io.gitlab.arturbosch.detekt.api.Issue
+import io.gitlab.arturbosch.detekt.api.Severity
+import io.gitlab.arturbosch.detekt.formatting.FormattingRule
 import org.cqfn.diktat.common.config.rules.RulesConfig
 import org.cqfn.diktat.ruleset.constants.Warnings.COMMENTED_OUT_CODE
+import org.cqfn.diktat.ruleset.rules.visitTokens
 import org.cqfn.diktat.ruleset.utils.findAllNodesWithSpecificType
 import org.jetbrains.kotlin.com.intellij.lang.ASTNode
 import org.jetbrains.kotlin.com.intellij.psi.TokenType
 import org.jetbrains.kotlin.lexer.KtTokens
 import org.jetbrains.kotlin.name.FqName
+import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.psi.KtPsiFactory
 import org.jetbrains.kotlin.resolve.ImportPath
 
@@ -116,6 +123,18 @@ class CommentsRule(private val configRules: List<RulesConfig>) : Rule("comments"
                     }
         } else {
             listOf()
+        }
+    }
+}
+
+class CommentsRuleWrapper(rulesConfig: List<RulesConfig>, config: Config): FormattingRule(config) {
+    override val wrapping = CommentsRule(rulesConfig)
+    override val issue = Issue(wrapping.id, Severity.Style, "Description TBD", Debt.FIVE_MINS)
+
+    override fun visit(root: KtFile) {
+        super.visit(root)
+        root.node.visitTokens { node ->
+            this.apply(node)
         }
     }
 }

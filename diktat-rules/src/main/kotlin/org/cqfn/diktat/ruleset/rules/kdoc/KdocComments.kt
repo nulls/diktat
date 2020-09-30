@@ -1,6 +1,5 @@
 package org.cqfn.diktat.ruleset.rules.kdoc
 
-import com.pinterest.ktlint.core.KtLint.FILE_PATH_USER_DATA_KEY
 import com.pinterest.ktlint.core.Rule
 import com.pinterest.ktlint.core.ast.ElementType.CLASS
 import com.pinterest.ktlint.core.ast.ElementType.CLASS_BODY
@@ -9,14 +8,30 @@ import com.pinterest.ktlint.core.ast.ElementType.FUN
 import com.pinterest.ktlint.core.ast.ElementType.KDOC
 import com.pinterest.ktlint.core.ast.ElementType.MODIFIER_LIST
 import com.pinterest.ktlint.core.ast.ElementType.PROPERTY
+import io.gitlab.arturbosch.detekt.api.Config
+import io.gitlab.arturbosch.detekt.api.Debt
+import io.gitlab.arturbosch.detekt.api.Issue
+import io.gitlab.arturbosch.detekt.api.Severity
+import io.gitlab.arturbosch.detekt.formatting.FormattingRule
 import org.cqfn.diktat.common.config.rules.RulesConfig
 import org.cqfn.diktat.common.config.rules.getCommonConfiguration
 import org.cqfn.diktat.ruleset.constants.Warnings
 import org.cqfn.diktat.ruleset.constants.Warnings.MISSING_KDOC_CLASS_ELEMENTS
 import org.cqfn.diktat.ruleset.constants.Warnings.MISSING_KDOC_TOP_LEVEL
-import org.cqfn.diktat.ruleset.utils.*
+import org.cqfn.diktat.ruleset.rules.visitTokens
+import org.cqfn.diktat.ruleset.utils.getAllChildrenWithType
+import org.cqfn.diktat.ruleset.utils.getFileName
+import org.cqfn.diktat.ruleset.utils.getFirstChildWithType
+import org.cqfn.diktat.ruleset.utils.getIdentifierName
+import org.cqfn.diktat.ruleset.utils.getRootNode
+import org.cqfn.diktat.ruleset.utils.hasTestAnnotation
+import org.cqfn.diktat.ruleset.utils.isAccessibleOutside
+import org.cqfn.diktat.ruleset.utils.isLocatedInTest
+import org.cqfn.diktat.ruleset.utils.isStandardMethod
+import org.cqfn.diktat.ruleset.utils.splitPathToDirs
 import org.jetbrains.kotlin.com.intellij.lang.ASTNode
 import org.jetbrains.kotlin.com.intellij.psi.tree.TokenSet
+import org.jetbrains.kotlin.psi.KtFile
 
 /**
  * This rule checks the following features in KDocs:
@@ -78,6 +93,18 @@ class KdocComments(private val configRules: List<RulesConfig>) : Rule("kdoc-comm
 
         if (modifier.isAccessibleOutside() && kdoc == null) {
             warning.warn(configRules, emitWarn, isFixMode, name!!.text, node.startOffset,node)
+        }
+    }
+}
+
+class KdocCommentsWrapper(configRules: List<RulesConfig>, config: Config): FormattingRule(config) {
+    override val wrapping = KdocComments(configRules)
+    override val issue = Issue(wrapping.id, Severity.Style, "Description TBD", Debt.FIVE_MINS)
+
+    override fun visit(root: KtFile) {
+        super.visit(root)
+        root.node.visitTokens { node ->
+            this.apply(node)
         }
     }
 }

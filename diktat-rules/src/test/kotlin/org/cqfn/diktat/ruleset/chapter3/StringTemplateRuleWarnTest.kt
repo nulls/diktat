@@ -1,7 +1,6 @@
 package org.cqfn.diktat.ruleset.chapter3
 
 import com.pinterest.ktlint.core.LintError
-import generated.WarningNames
 import generated.WarningNames.STRING_TEMPLATE_CURLY_BRACES
 import generated.WarningNames.STRING_TEMPLATE_QUOTES
 import org.cqfn.diktat.ruleset.constants.Warnings

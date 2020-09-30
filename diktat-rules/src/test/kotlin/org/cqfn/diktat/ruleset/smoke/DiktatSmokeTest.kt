@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import java.nio.file.Path
 
+/*
 // fixme: run as a separate maven goal/module?
 @Disabled("https://github.com/cqfn/diKTat/issues/313")
 class DiktatSmokeTest : FixTestBase("test/smoke/src/main/kotlin",
@@ -62,3 +63,4 @@ class DiktatSmokeTest : FixTestBase("test/smoke/src/main/kotlin",
         )
     }
 }
+*/
