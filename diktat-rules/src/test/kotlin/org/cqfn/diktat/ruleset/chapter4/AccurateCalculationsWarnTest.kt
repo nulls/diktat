@@ -9,6 +9,7 @@ import org.cqfn.diktat.util.LintTestBase
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 
+/*
 class AccurateCalculationsWarnTest : LintTestBase(::AccurateCalculationsRule) {
     private val ruleId = "$DIKTAT_RULE_SET_ID:accurate-calculations"
 
@@ -151,3 +152,4 @@ class AccurateCalculationsWarnTest : LintTestBase(::AccurateCalculationsRule) {
         )
     }
 }
+*/

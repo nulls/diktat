@@ -5,20 +5,8 @@ import io.gitlab.arturbosch.detekt.api.RuleSet
 import io.gitlab.arturbosch.detekt.api.RuleSetProvider
 import org.cqfn.diktat.common.config.rules.RulesConfigReader
 import org.cqfn.diktat.ruleset.rules.calculations.AccurateCalculationsRule
-import org.cqfn.diktat.ruleset.rules.comments.CommentsRule
 import org.cqfn.diktat.ruleset.rules.comments.CommentsRuleWrapper
-import org.cqfn.diktat.ruleset.rules.comments.HeaderCommentRule
-import org.cqfn.diktat.ruleset.rules.files.BlankLinesRule
-import org.cqfn.diktat.ruleset.rules.files.FileSize
-import org.cqfn.diktat.ruleset.rules.files.FileStructureRule
-import org.cqfn.diktat.ruleset.rules.files.IndentationRule
-import org.cqfn.diktat.ruleset.rules.files.NewlinesRule
-import org.cqfn.diktat.ruleset.rules.kdoc.CommentsFormatting
-import org.cqfn.diktat.ruleset.rules.identifiers.LocalVariablesRule
-import org.cqfn.diktat.ruleset.rules.kdoc.KdocComments
 import org.cqfn.diktat.ruleset.rules.kdoc.KdocCommentsWrapper
-import org.cqfn.diktat.ruleset.rules.kdoc.KdocFormatting
-import org.cqfn.diktat.ruleset.rules.kdoc.KdocMethods
 import org.jetbrains.kotlin.com.intellij.lang.ASTNode
 import org.jetbrains.kotlin.com.intellij.psi.impl.source.JavaDummyElement
 import org.jetbrains.kotlin.com.intellij.psi.impl.source.JavaDummyHolder
@@ -37,7 +25,7 @@ class DiktatRuleSetProvider(private val diktatConfigFile: String = "diktat-analy
         val configRules = RulesConfigReader(javaClass.classLoader).readResource(diktatConfigFile) ?: listOf()
         val rules = listOf(
                 ::CommentsRuleWrapper,
-                ::KdocCommentsWrapper//,
+                ::KdocCommentsWrapper,
 //                ::KdocMethods,
 //                ::KdocFormatting,
 //                ::FileNaming,
@@ -61,7 +49,7 @@ class DiktatRuleSetProvider(private val diktatConfigFile: String = "diktat-analy
 //                ::HeaderCommentRule,
 //                ::SortRule,
 //                ::StringConcatenationRule,
-//                ::AccurateCalculationsRule,
+                ::AccurateCalculationsRule
 //                ::LineLength,
 //                ::TypeAliasRule,
 //                ::BlankLinesRule,

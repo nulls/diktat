@@ -259,7 +259,7 @@ exceptions:
       - RuntimeException
 
 formatting:
-  active: true
+  active: false
   android: false
   autoCorrect: true
   AnnotationOnSeparateLine:
@@ -817,4 +817,6 @@ diktat-ruleset:
   comments:
     active: true
   kdoc-comments:
+    active: true
+  accurate-calculations:
     active: true

@@ -309,7 +309,8 @@
                     <dependency>
                         <groupId>io.gitlab.arturbosch.detekt</groupId>
                         <artifactId>detekt-cli</artifactId>
-                        <version>${detekt.version}</version>
+                        <!-- Fixme: this version doesn't have bug in classpath separation, but there is not corresponding maven plugin version -->
+                        <version>1.11.1</version>
                         <exclusions>
                             <exclusion>
                                 <groupId>io.gitlab.arturbosch.detekt</groupId>
