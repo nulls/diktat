@@ -1,0 +1,17 @@
+name: Benedikt
+
+on:
+  workflow_dispatch:
+
+jobs:
+  diktat_check:
+    name: 'diKTat Check'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: nulls/benedikt@b3fda22
+        with:
+          input-paths: |
+            examples/**/*.kt
