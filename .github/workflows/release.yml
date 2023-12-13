@@ -45,6 +45,8 @@ jobs:
           arguments: |
             build
             -x detekt
+            -x test
+            shadowExecutableJar
             publishAllPublicationsToGitHubRepository
       - name: 'GitHub Release'
         id: create_release
