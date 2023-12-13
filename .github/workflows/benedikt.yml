@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: nulls/benedikt@b593be3680c91bd7bf125fbd5cfc90c8973304c3
+      - uses: nulls/benedikt@a76632e12ce0ef5a5cbef098ef5e869b83067953
         with:
           input-paths: |
             examples/**/*.kt
