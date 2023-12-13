@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: nulls/benedikt@26e3f27a9eaad7ef47df9e5d7defafbb9c5b85ec
+      - uses: nulls/benedikt@feature/migrate-diktat-2.x
         with:
           input-paths: |
             examples/**/*.kt
