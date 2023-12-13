@@ -43,6 +43,8 @@ jobs:
         with:
           gradle-version: wrapper
           arguments: |
+            build
+            -x detekt
             publishAllPublicationsToGitHubRepository
       - name: 'GitHub Release'
         id: create_release
