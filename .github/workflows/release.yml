@@ -33,25 +33,6 @@ jobs:
           java-version: 11
           distribution: temurin
 
-      - name: 'Publish a release to Maven Central'
-        id: publish-sonatype
-        uses: gradle/gradle-build-action@v2
-        with:
-          gradle-version: wrapper
-          arguments: |
-            publishToSonatype
-            closeAndReleaseSonatypeStagingRepository
-
-      - name: 'Publish a release to Gradle Plugins'
-        id: publish-gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          gradle-version: wrapper
-          arguments: |
-            :diktat-gradle-plugin:publishPlugins
-            -Pgradle.publish.key=${{ secrets.GRADLE_KEY }}
-            -Pgradle.publish.secret=${{ secrets.GRADLE_SECRET }}
-
       - name: 'Publish a release to GitHub'
         id: publish-github
         uses: gradle/gradle-build-action@v2
