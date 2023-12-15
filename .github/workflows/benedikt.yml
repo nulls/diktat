@@ -2,6 +2,7 @@ name: Benedikt
 
 on:
   workflow_dispatch:
+  pull_request:
 
 jobs:
   diktat_check:
