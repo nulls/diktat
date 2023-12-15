@@ -1,10 +1,10 @@
 package incorrect
 
-class incorrectname: Exception() {
+class incorrectname3: Exception() {
     fun INCORRECT_FUNCTION() {
 	    throw Exception()
 	}
-	
+
 	// fun myCommentedFunction() {
 	// }
 
