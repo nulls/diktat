@@ -14,5 +14,6 @@ jobs:
 
       - uses: nulls/benedikt@5c2b431b3a7a567d9103b917fcf520f78e2cc899
         with:
+          reporter: 'checkstyle'
           input-paths: |
             examples/**/*.kt
