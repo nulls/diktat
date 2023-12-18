@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: nulls/benedikt@9c79f3ae03d722e399112bd1bb16450e830814ff
+      - uses: nulls/benedikt@ff3fedd600793a3a40853fecd577feb7e847f204
         with:
           debug: true
           input-paths: |
