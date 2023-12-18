@@ -12,8 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: nulls/benedikt@5c2b431b3a7a567d9103b917fcf520f78e2cc899
+      - uses: nulls/benedikt@deaa1b092592246b1691a0a1fecfb9e539cb153b
         with:
           reporter: 'checkstyle'
+          debug: true
           input-paths: |
             examples/**/*.kt
