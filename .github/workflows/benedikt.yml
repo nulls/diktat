@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: nulls/benedikt@ebd0cf61265705b839874408ff79ae2764d67f10
+      - uses: nulls/benedikt@7e985b1e841af0bd9b8a4dcfe1d6b1643c3f5ad3
         with:
           reporter: 'checkstyle'
           debug: true
