@@ -14,6 +14,6 @@ jobs:
 
       - uses: saveourtool/benedikt@v2
         with:
-          reporter: test
+          reporter: sarif
           input-paths: |
             examples/**/*.kt
